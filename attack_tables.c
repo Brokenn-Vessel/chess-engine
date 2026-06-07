@@ -1,0 +1,760 @@
+#include "attack_tables.h"
+
+u64 pawnAttackTable[2][64] = {
+    //white
+    {
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000002ULL,
+        0x0000000000000005ULL,
+        0x000000000000000aULL,
+        0x0000000000000014ULL,
+        0x0000000000000028ULL,
+        0x0000000000000050ULL,
+        0x00000000000000a0ULL,
+        0x0000000000000040ULL,
+        0x0000000000000200ULL,
+        0x0000000000000500ULL,
+        0x0000000000000a00ULL,
+        0x0000000000001400ULL,
+        0x0000000000002800ULL,
+        0x0000000000005000ULL,
+        0x000000000000a000ULL,
+        0x0000000000004000ULL,
+        0x0000000000020000ULL,
+        0x0000000000050000ULL,
+        0x00000000000a0000ULL,
+        0x0000000000140000ULL,
+        0x0000000000280000ULL,
+        0x0000000000500000ULL,
+        0x0000000000a00000ULL,
+        0x0000000000400000ULL,
+        0x0000000002000000ULL,
+        0x0000000005000000ULL,
+        0x000000000a000000ULL,
+        0x0000000014000000ULL,
+        0x0000000028000000ULL,
+        0x0000000050000000ULL,
+        0x00000000a0000000ULL,
+        0x0000000040000000ULL,
+        0x0000000200000000ULL,
+        0x0000000500000000ULL,
+        0x0000000a00000000ULL,
+        0x0000001400000000ULL,
+        0x0000002800000000ULL,
+        0x0000005000000000ULL,
+        0x000000a000000000ULL,
+        0x0000004000000000ULL,
+        0x0000020000000000ULL,
+        0x0000050000000000ULL,
+        0x00000a0000000000ULL,
+        0x0000140000000000ULL,
+        0x0000280000000000ULL,
+        0x0000500000000000ULL,
+        0x0000a00000000000ULL,
+        0x0000400000000000ULL,
+        0x0002000000000000ULL,
+        0x0005000000000000ULL,
+        0x000a000000000000ULL,
+        0x0014000000000000ULL,
+        0x0028000000000000ULL,
+        0x0050000000000000ULL,
+        0x00a0000000000000ULL,
+        0x0040000000000000ULL
+    },
+    //black
+    {
+        0x0000000000000200ULL,
+        0x0000000000000500ULL,
+        0x0000000000000a00ULL,
+        0x0000000000001400ULL,
+        0x0000000000002800ULL,
+        0x0000000000005000ULL,
+        0x000000000000a000ULL,
+        0x0000000000004000ULL,
+        0x0000000000020000ULL,
+        0x0000000000050000ULL,
+        0x00000000000a0000ULL,
+        0x0000000000140000ULL,
+        0x0000000000280000ULL,
+        0x0000000000500000ULL,
+        0x0000000000a00000ULL,
+        0x0000000000400000ULL,
+        0x0000000002000000ULL,
+        0x0000000005000000ULL,
+        0x000000000a000000ULL,
+        0x0000000014000000ULL,
+        0x0000000028000000ULL,
+        0x0000000050000000ULL,
+        0x00000000a0000000ULL,
+        0x0000000040000000ULL,
+        0x0000000200000000ULL,
+        0x0000000500000000ULL,
+        0x0000000a00000000ULL,
+        0x0000001400000000ULL,
+        0x0000002800000000ULL,
+        0x0000005000000000ULL,
+        0x000000a000000000ULL,
+        0x0000004000000000ULL,
+        0x0000020000000000ULL,
+        0x0000050000000000ULL,
+        0x00000a0000000000ULL,
+        0x0000140000000000ULL,
+        0x0000280000000000ULL,
+        0x0000500000000000ULL,
+        0x0000a00000000000ULL,
+        0x0000400000000000ULL,
+        0x0002000000000000ULL,
+        0x0005000000000000ULL,
+        0x000a000000000000ULL,
+        0x0014000000000000ULL,
+        0x0028000000000000ULL,
+        0x0050000000000000ULL,
+        0x00a0000000000000ULL,
+        0x0040000000000000ULL,
+        0x0200000000000000ULL,
+        0x0500000000000000ULL,
+        0x0a00000000000000ULL,
+        0x1400000000000000ULL,
+        0x2800000000000000ULL,
+        0x5000000000000000ULL,
+        0xa000000000000000ULL,
+        0x4000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL,
+        0x0000000000000000ULL
+    }
+} ;
+
+
+//  KNIGHT ATTACK TABLES
+u64 knightAttackTable[64] = {
+
+    0x0000000000020400ULL,
+    0x0000000000050800ULL,
+    0x00000000000a1100ULL,
+    0x0000000000142200ULL,
+    0x0000000000284400ULL,
+    0x0000000000508800ULL,
+    0x0000000000a01000ULL,
+    0x0000000000402000ULL,
+    0x0000000002040004ULL,
+    0x0000000005080008ULL,
+    0x000000000a110011ULL,
+    0x0000000014220022ULL,
+    0x0000000028440044ULL,
+    0x0000000050880088ULL,
+    0x00000000a0100010ULL,
+    0x0000000040200020ULL,
+    0x0000000204000402ULL,
+    0x0000000508000805ULL,
+    0x0000000a1100110aULL,
+    0x0000001422002214ULL,
+    0x0000002844004428ULL,
+    0x0000005088008850ULL,
+    0x000000a0100010a0ULL,
+    0x0000004020002040ULL,
+    0x0000020400040200ULL,
+    0x0000050800080500ULL,
+    0x00000a1100110a00ULL,
+    0x0000142200221400ULL,
+    0x0000284400442800ULL,
+    0x0000508800885000ULL,
+    0x0000a0100010a000ULL,
+    0x0000402000204000ULL,
+    0x0002040004020000ULL,
+    0x0005080008050000ULL,
+    0x000a1100110a0000ULL,
+    0x0014220022140000ULL,
+    0x0028440044280000ULL,
+    0x0050880088500000ULL,
+    0x00a0100010a00000ULL,
+    0x0040200020400000ULL,
+    0x0204000402000000ULL,
+    0x0508000805000000ULL,
+    0x0a1100110a000000ULL,
+    0x1422002214000000ULL,
+    0x2844004428000000ULL,
+    0x5088008850000000ULL,
+    0xa0100010a0000000ULL,
+    0x4020002040000000ULL,
+    0x0400040200000000ULL,
+    0x0800080500000000ULL,
+    0x1100110a00000000ULL,
+    0x2200221400000000ULL,
+    0x4400442800000000ULL,
+    0x8800885000000000ULL,
+    0x100010a000000000ULL,
+    0x2000204000000000ULL,
+    0x0004020000000000ULL,
+    0x0008050000000000ULL,
+    0x00110a0000000000ULL,
+    0x0022140000000000ULL,
+    0x0044280000000000ULL,
+    0x0088500000000000ULL,
+    0x0010a00000000000ULL,
+    0x0020400000000000ULL
+
+} ;
+
+
+//  KING ATTACK MASKS
+
+u64 kingAttackTable[64] = {
+
+    0x0000000000000302ULL,
+    0x0000000000000705ULL,
+    0x0000000000000e0aULL,
+    0x0000000000001c14ULL,
+    0x0000000000003828ULL,
+    0x0000000000007050ULL,
+    0x000000000000e0a0ULL,
+    0x000000000000c040ULL,
+    0x0000000000030203ULL,
+    0x0000000000070507ULL,
+    0x00000000000e0a0eULL,
+    0x00000000001c141cULL,
+    0x0000000000382838ULL,
+    0x0000000000705070ULL,
+    0x0000000000e0a0e0ULL,
+    0x0000000000c040c0ULL,
+    0x0000000003020300ULL,
+    0x0000000007050700ULL,
+    0x000000000e0a0e00ULL,
+    0x000000001c141c00ULL,
+    0x0000000038283800ULL,
+    0x0000000070507000ULL,
+    0x00000000e0a0e000ULL,
+    0x00000000c040c000ULL,
+    0x0000000302030000ULL,
+    0x0000000705070000ULL,
+    0x0000000e0a0e0000ULL,
+    0x0000001c141c0000ULL,
+    0x0000003828380000ULL,
+    0x0000007050700000ULL,
+    0x000000e0a0e00000ULL,
+    0x000000c040c00000ULL,
+    0x0000030203000000ULL,
+    0x0000070507000000ULL,
+    0x00000e0a0e000000ULL,
+    0x00001c141c000000ULL,
+    0x0000382838000000ULL,
+    0x0000705070000000ULL,
+    0x0000e0a0e0000000ULL,
+    0x0000c040c0000000ULL,
+    0x0003020300000000ULL,
+    0x0007050700000000ULL,
+    0x000e0a0e00000000ULL,
+    0x001c141c00000000ULL,
+    0x0038283800000000ULL,
+    0x0070507000000000ULL,
+    0x00e0a0e000000000ULL,
+    0x00c040c000000000ULL,
+    0x0302030000000000ULL,
+    0x0705070000000000ULL,
+    0x0e0a0e0000000000ULL,
+    0x1c141c0000000000ULL,
+    0x3828380000000000ULL,
+    0x7050700000000000ULL,
+    0xe0a0e00000000000ULL,
+    0xc040c00000000000ULL,
+    0x0203000000000000ULL,
+    0x0507000000000000ULL,
+    0x0a0e000000000000ULL,
+    0x141c000000000000ULL,
+    0x2838000000000000ULL,
+    0x5070000000000000ULL,
+    0xa0e0000000000000ULL,
+    0x40c0000000000000ULL
+
+} ;
+
+//  MAGIC NUMBERS
+// magic_index = occupancy * magic_number >> (64 - relevant_bits)
+
+//ROOK
+
+u64 rookMagicNumber[64] = {
+    0x8a80104000800020ULL,
+    0x0140002000100040ULL,
+    0x02801880a0017001ULL,
+    0x0100081001000420ULL,
+    0x0200020010080420ULL,
+    0x03001c0002010008ULL,
+    0x8480008002000100ULL,
+    0x2080088004402900ULL,
+    0x0000800098204000ULL,
+    0x2024401000200040ULL,
+    0x0100802000801000ULL,
+    0x0120800800801000ULL,
+    0x0208808088000400ULL,
+    0x0002802200800400ULL,
+    0x2200800100020080ULL,
+    0x0801000060821100ULL,
+    0x0080044006422000ULL,
+    0x0100808020004000ULL,
+    0x12108a0010204200ULL,
+    0x0140848010000802ULL,
+    0x0481828014002800ULL,
+    0x8094004002004100ULL,
+    0x4010040010010802ULL,
+    0x0000020008806104ULL,
+    0x0100400080208000ULL,
+    0x2040002120081000ULL,
+    0x0021200680100081ULL,
+    0x0020100080080080ULL,
+    0x0002000a00200410ULL,
+    0x0000020080800400ULL,
+    0x0080088400100102ULL,
+    0x0080004600042881ULL,
+    0x4040008040800020ULL,
+    0x0440003000200801ULL,
+    0x0004200011004500ULL,
+    0x0188020010100100ULL,
+    0x0014800401802800ULL,
+    0x2080040080800200ULL,
+    0x0124080204001001ULL,
+    0x0200046502000484ULL,
+    0x0480400080088020ULL,
+    0x1000422010034000ULL,
+    0x0030200100110040ULL,
+    0x0000100021010009ULL,
+    0x2002080100110004ULL,
+    0x0202008004008002ULL,
+    0x0020020004010100ULL,
+    0x2048440040820001ULL,
+    0x0101002200408200ULL,
+    0x0040802000401080ULL,
+    0x4008142004410100ULL,
+    0x02060820c0120200ULL,
+    0x0001001004080100ULL,
+    0x020c020080040080ULL,
+    0x2935610830022400ULL,
+    0x0044440041009200ULL,
+    0x0280001040802101ULL,
+    0x2100190040002085ULL,
+    0x80c0084100102001ULL,
+    0x4024081001000421ULL,
+    0x00020030a0244872ULL,
+    0x0012001008414402ULL,
+    0x02006104900a0804ULL,
+    0x0001004081002402ULL
+};
+
+
+//BISHOP
+u64 bishopMagicNumber[64] = {
+    0x0040040844404084ULL,
+    0x002004208a004208ULL,
+    0x0010190041080202ULL,
+    0x0108060845042010ULL,
+    0x0581104180800210ULL,
+    0x2112080446200010ULL,
+    0x1080820820060210ULL,
+    0x03c0808410220200ULL,
+    0x0004050404440404ULL,
+    0x0000021001420088ULL,
+    0x24d0080801082102ULL,
+    0x0001020a0a020400ULL,
+    0x0000040308200402ULL,
+    0x0004011002100800ULL,
+    0x0401484104104005ULL,
+    0x0801010402020200ULL,
+    0x00400210c3880100ULL,
+    0x0404022024108200ULL,
+    0x0810018200204102ULL,
+    0x0004002801a02003ULL,
+    0x0085040820080400ULL,
+    0x810102c808880400ULL,
+    0x000e900410884800ULL,
+    0x8002020480840102ULL,
+    0x0220200865090201ULL,
+    0x2010100a02021202ULL,
+    0x0152048408022401ULL,
+    0x0020080002081110ULL,
+    0x4001001021004000ULL,
+    0x800040400a011002ULL,
+    0x00e4004081011002ULL,
+    0x001c004001012080ULL,
+    0x8004200962a00220ULL,
+    0x8422100208500202ULL,
+    0x2000402200300c08ULL,
+    0x8646020080080080ULL,
+    0x80020a0200100808ULL,
+    0x2010004880111000ULL,
+    0x623000a080011400ULL,
+    0x42008c0340209202ULL,
+    0x0209188240001000ULL,
+    0x400408a884001800ULL,
+    0x00110400a6080400ULL,
+    0x1840060a44020800ULL,
+    0x0090080104000041ULL,
+    0x0201011000808101ULL,
+    0x1a2208080504f080ULL,
+    0x8012020600211212ULL,
+    0x0500861011240000ULL,
+    0x0180806108200800ULL,
+    0x4000020e01040044ULL,
+    0x300000261044000aULL,
+    0x0802241102020002ULL,
+    0x0020906061210001ULL,
+    0x5a84841004010310ULL,
+    0x0004010801011c04ULL,
+    0x000a010109502200ULL,
+    0x0000004a02012000ULL,
+    0x500201010098b028ULL,
+    0x8040002811040900ULL,
+    0x0028000010020204ULL,
+    0x06000020202d0240ULL,
+    0x8918844842082200ULL,
+    0x4010011029020020ULL
+};
+
+//  BISHOP ATTACK MASK
+
+u64 bishopAttackMask[64] = {
+    0x0040201008040200ULL,
+    0x0000402010080400ULL,
+    0x0000004020100a00ULL,
+    0x0000000040221400ULL,
+    0x0000000002442800ULL,
+    0x0000000204085000ULL,
+    0x0000020408102000ULL,
+    0x0002040810204000ULL,
+    0x0020100804020000ULL,
+    0x0040201008040000ULL,
+    0x00004020100a0000ULL,
+    0x0000004022140000ULL,
+    0x0000000244280000ULL,
+    0x0000020408500000ULL,
+    0x0002040810200000ULL,
+    0x0004081020400000ULL,
+    0x0010080402000200ULL,
+    0x0020100804000400ULL,
+    0x004020100a000a00ULL,
+    0x0000402214001400ULL,
+    0x0000024428002800ULL,
+    0x0002040850005000ULL,
+    0x0004081020002000ULL,
+    0x0008102040004000ULL,
+    0x0008040200020400ULL,
+    0x0010080400040800ULL,
+    0x0020100a000a1000ULL,
+    0x0040221400142200ULL,
+    0x0002442800284400ULL,
+    0x0004085000500800ULL,
+    0x0008102000201000ULL,
+    0x0010204000402000ULL,
+    0x0004020002040800ULL,
+    0x0008040004081000ULL,
+    0x00100a000a102000ULL,
+    0x0022140014224000ULL,
+    0x0044280028440200ULL,
+    0x0008500050080400ULL,
+    0x0010200020100800ULL,
+    0x0020400040201000ULL,
+    0x0002000204081000ULL,
+    0x0004000408102000ULL,
+    0x000a000a10204000ULL,
+    0x0014001422400000ULL,
+    0x0028002844020000ULL,
+    0x0050005008040200ULL,
+    0x0020002010080400ULL,
+    0x0040004020100800ULL,
+    0x0000020408102000ULL,
+    0x0000040810204000ULL,
+    0x00000a1020400000ULL,
+    0x0000142240000000ULL,
+    0x0000284402000000ULL,
+    0x0000500804020000ULL,
+    0x0000201008040200ULL,
+    0x0000402010080400ULL,
+    0x0002040810204000ULL,
+    0x0004081020400000ULL,
+    0x000a102040000000ULL,
+    0x0014224000000000ULL,
+    0x0028440200000000ULL,
+    0x0050080402000000ULL,
+    0x0020100804020000ULL,
+    0x0040201008040200ULL
+} ;
+
+//  ROOK ATTACK MASK
+
+u64 rookAttackMask[64] = {
+    0x000101010101017eULL,
+    0x000202020202027cULL,
+    0x000404040404047aULL,
+    0x0008080808080876ULL,
+    0x001010101010106eULL,
+    0x002020202020205eULL,
+    0x004040404040403eULL,
+    0x008080808080807eULL,
+    0x0001010101017e00ULL,
+    0x0002020202027c00ULL,
+    0x0004040404047a00ULL,
+    0x0008080808087600ULL,
+    0x0010101010106e00ULL,
+    0x0020202020205e00ULL,
+    0x0040404040403e00ULL,
+    0x0080808080807e00ULL,
+    0x00010101017e0100ULL,
+    0x00020202027c0200ULL,
+    0x00040404047a0400ULL,
+    0x0008080808760800ULL,
+    0x00101010106e1000ULL,
+    0x00202020205e2000ULL,
+    0x00404040403e4000ULL,
+    0x00808080807e8000ULL,
+    0x000101017e010100ULL,
+    0x000202027c020200ULL,
+    0x000404047a040400ULL,
+    0x0008080876080800ULL,
+    0x001010106e101000ULL,
+    0x002020205e202000ULL,
+    0x004040403e404000ULL,
+    0x008080807e808000ULL,
+    0x0001017e01010100ULL,
+    0x0002027c02020200ULL,
+    0x0004047a04040400ULL,
+    0x0008087608080800ULL,
+    0x0010106e10101000ULL,
+    0x0020205e20202000ULL,
+    0x0040403e40404000ULL,
+    0x0080807e80808000ULL,
+    0x00017e0101010100ULL,
+    0x00027c0202020200ULL,
+    0x00047a0404040400ULL,
+    0x0008760808080800ULL,
+    0x00106e1010101000ULL,
+    0x00205e2020202000ULL,
+    0x00403e4040404000ULL,
+    0x00807e8080808000ULL,
+    0x007e010101010100ULL,
+    0x007c020202020200ULL,
+    0x007a040404040400ULL,
+    0x0076080808080800ULL,
+    0x006e101010101000ULL,
+    0x005e202020202000ULL,
+    0x003e404040404000ULL,
+    0x007e808080808000ULL,
+    0x7e01010101010100ULL,
+    0x7c02020202020200ULL,
+    0x7a04040404040400ULL,
+    0x7608080808080800ULL,
+    0x6e10101010101000ULL,
+    0x5e20202020202000ULL,
+    0x3e40404040404000ULL,
+    0x7e80808080808000ULL
+} ;
+
+u64 bishopAttackTable[64][512] ;
+u64 rookAttackTable[64][4096] ;
+
+u64 genPawnAttackMask(int square, int side) {
+    u64 bitboard = 0ULL;
+    u64 attacks = 0ULL;
+
+    set_bit(bitboard, square);
+
+    if(side == WHITE) {
+        if(bitboard & (~FILEH)) attacks |= bitboard >> 7;
+        if(bitboard & (~FILEA)) attacks |= bitboard >> 9;
+    }
+    else {
+        if(bitboard & (~FILEA)) attacks |= bitboard << 7;
+        if(bitboard & (~FILEH)) attacks |= bitboard << 9;
+    }
+
+    return attacks;
+
+}
+
+u64 genKnightAttackMask(int square) {
+
+    u64 attacks = 0ULL;
+    u64 bitboard = 0ULL;
+    set_bit(bitboard, square);
+
+    //17, 15, 10, 6   up-> right shift, down-> left shift, right -> left shift, left -> right shift
+
+    if(bitboard & (~FILEH) & (~(RANK7 | RANK8))) attacks |= bitboard >> 15;
+    if(bitboard & (~FILEA) & (~(RANK7 | RANK8))) attacks |= bitboard >> 17;
+    if(bitboard & (~FILEA) & (~(RANK1 | RANK2))) attacks |= bitboard << 15;
+    if(bitboard & (~FILEH) & (~(RANK1 | RANK2))) attacks |= bitboard << 17;
+    if(bitboard & (~(FILEA | FILEB)) & (~RANK8)) attacks |= bitboard >> 10;
+    if(bitboard & (~(FILEG | FILEH)) & (~RANK8)) attacks |= bitboard >> 6;
+    if(bitboard & (~(FILEG | FILEH)) & (~RANK1)) attacks |= bitboard << 10;
+    if(bitboard & (~(FILEA | FILEB)) & (~RANK1)) attacks |= bitboard << 6;
+
+
+    return attacks;
+}
+
+u64 genKingAttackMask(int square) {
+
+    u64 attacks = 0ULL;
+    u64 bitboard = 0ULL;
+
+    set_bit(bitboard, square);
+
+
+    if(bitboard & (~RANK1)) attacks |= bitboard << 8; //down
+    if(bitboard & (~RANK8)) attacks |= bitboard >> 8; //up
+    if(bitboard & (~FILEH)) attacks |= bitboard << 1; //right
+    if(bitboard & (~FILEA)) attacks |= bitboard >> 1; //left
+    if(bitboard & (~FILEA) & (~RANK1)) attacks |= bitboard << 7; //down-left
+    if(bitboard & (~FILEH) & (~RANK1)) attacks |= bitboard << 9; //down-right
+    if(bitboard & (~FILEH) & (~RANK8)) attacks |= bitboard >> 7; //up-right
+    if(bitboard & (~FILEA) & (~RANK8)) attacks |= bitboard >> 9; //up-left
+
+
+    return attacks;
+
+}
+
+u64 setOccupancy(u64 attackMask, int bitsInAttackMask, int index) {
+    u64 occupancy = 0ULL;
+
+    for(int i = 0 ; i < bitsInAttackMask ; i++) {
+        int square = get_ls1b_index(attackMask);
+
+        if(index & (1ULL << i)) occupancy |= (1ULL << square);
+
+        pop_ls1b(attackMask);
+    }
+
+    return occupancy;
+}
+
+u64 genRookAttack(int square, u64 blockers) {
+    u64 attacks = 0ULL;
+
+    int r, f;
+    int tr = square / 8; 
+    int tf = square % 8; 
+    
+    
+    // if blocker is present at thge current bit break from the loop
+    for(r = tr + 1, f = tf; r <= 7 ; r++) {
+        attacks |= (1ULL << ((r*8) + f));
+        if((1ULL << (r*8 + f)) & blockers) break;
+    }
+    for(r = tr - 1, f = tf; r >= 0 ; r--) {
+        attacks |= (1ULL << ((r*8) + f));
+        if((1ULL << ((r*8) + f)) & blockers) break;
+    }
+    for(r = tr, f = tf + 1; f <= 7 ; f++) {
+        attacks |= (1ULL << ((r*8) + f));
+        if((1ULL << ((r*8) + f)) & blockers) break; 
+    }
+    for(r = tr, f = tf - 1; f >= 0 ; f--) {
+        attacks |= (1ULL << ((r*8) + f));
+        if((1ULL << ((r*8) + f)) & blockers) break;
+    }
+
+    return attacks;
+}
+
+u64 genBishopAttack(int square, u64 blockers) {
+    u64 attacks = 0ULL;
+
+    int r, f;
+    int tr = square / 8;
+    int tf = square % 8;
+
+
+    // if blocker is present at the current bit, break from the loop
+    for(r = tr + 1, f = tf + 1 ; r <= 7 && f <= 7 ; r++, f++) {
+        attacks |= (1ULL << (r*8 + f));
+        if((1ULL << ((r*8) + f)) & blockers) break; 
+    }
+    for(r = tr + 1, f = tf - 1 ; r <= 7 && f >= 0 ; r++, f--) {
+        attacks |= (1ULL << (r*8 + f));
+        if((1ULL << ((r*8) + f)) & blockers) break; 
+    }
+    for(r = tr - 1, f = tf + 1 ; r >= 0 && f <= 7 ; r--, f++) {
+        attacks |= (1ULL << (r*8 + f));
+        if((1ULL << ((r*8) + f)) & blockers) break; 
+    }
+    for(r = tr - 1, f = tf - 1 ; r >= 0 && f >= 0 ; r--, f--) {
+        attacks |= (1ULL << (r*8 + f));
+        if((1ULL << ((r*8) + f)) & blockers) break; 
+    }
+    return attacks;
+}
+
+/*NEED to call this during initialization*/
+
+void initSliderAttacks() {
+    
+    for(int square = 0; square < 64; square++) {
+        //bishop
+        int relevantBits = bishop_relevant_bits[square] ;
+        int occupancyIndices = 1 << relevantBits ;
+
+        for(int index = 0; index < occupancyIndices; index++) {
+            u64 occupancy = setOccupancy(bishopAttackMask[square], relevantBits, index) ;
+            u64 attack = genBishopAttack(square, occupancy) ;
+            int magicIndex = (int)((occupancy * bishopMagicNumber[square]) >> (64 - relevantBits)) ;
+
+            bishopAttackTable[square][magicIndex] = attack ;
+        } 
+        //rook
+
+        relevantBits = rook_relevant_bits[square] ;
+        occupancyIndices = 1 << relevantBits ;
+
+        for(int index = 0; index < occupancyIndices; index++) {
+            u64 occupancy = setOccupancy(rookAttackMask[square], relevantBits, index) ;
+            u64 attack = genRookAttack(square, occupancy) ;
+            int magicIndex = (int)((occupancy * rookMagicNumber[square]) >> (64 - relevantBits)) ;
+
+            rookAttackTable[square][magicIndex] = attack ;
+        }
+
+        //queen
+        // relevant_bits = queen_relevant_bits[square] ;
+        // occupancy_indices = 1 << relevant_bits ;
+        // u64 attack_mask_queen = attack_mask_rook | attack_mask_bishop ;
+        // for(int index = 0; index < occupancy_indices; index++) {
+        //     u64 occupancy = set_occupancy(attack_mask_queen, relevant_bits, index) ;
+        //     u64 attack = gen_bishop_attack(square, occupancy & attack_mask_bishop) | gen_rook_attack(square, occupancy & attack_mask_rook) ;
+            
+        // }
+        
+    }
+
+}
+
+u64 getRookAttack(int square, u64 occupancy) {
+
+    occupancy &= rookAttackMask[square] ;
+    int magicIndex = (int)((occupancy * rookMagicNumber[square]) >> (64 - rook_relevant_bits[square])) ;
+    return rookAttackTable[square][magicIndex] ;
+
+}
+
+
+u64 getBishopAttack(int square, u64 occupancy) {
+
+    occupancy &= bishopAttackMask[square] ;
+    int magicIndex = (int)((occupancy * bishopMagicNumber[square]) >> (64 - bishop_relevant_bits[square])) ;
+    return bishopAttackTable[square][magicIndex] ;
+      
+}
+
+u64 getQueenAttack(int square, u64 occupancy) {
+    return (getRookAttack(square, occupancy) | getBishopAttack(square, occupancy)) ;
+}
