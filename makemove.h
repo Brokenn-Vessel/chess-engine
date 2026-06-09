@@ -16,5 +16,5 @@
                         board->side = side_copy, board->castling = castling_copy, board->enpassant = enpassant_copy  \
 
 int makeMove(Board* board, int move, int move_type) ;
-int isLegal(Moves* moveList, int ss, int ts) ;
+int getMoveIfLegal(Moves* moveList, int ss, int ts) ;
 #endif

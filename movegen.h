@@ -8,5 +8,5 @@
 #include "bit_utils.h"
 
 void generateMoves(Moves* moveList, Board* board) ;
-
+void legalMoves(Moves* pseudoLegalMoves, Moves* legalMoveList, Board* board) ;
 #endif

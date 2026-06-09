@@ -20,5 +20,6 @@ void printBoard(Board* board) ;
 void parseFen(Board* board, const char* fen) ;
 int isSquareAttacked(Board* board, int square, int side) ;
 int pieceAtSquare(Board* board, int square) ;
+int inCheck(Board* board) ;
 
 #endif

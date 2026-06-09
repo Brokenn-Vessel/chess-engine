@@ -142,7 +142,7 @@ int makeMove(Board* board, int move, int move_type) {
 
 }
 
-int isLegal(Moves* moveList, int ss, int ts) {
+int getMoveIfLegal(Moves* moveList, int ss, int ts) {
 
     for(int i=0; i<moveList->count; i++) {
         if(ss == getSourceSquare(moveList->moveList[i])) {

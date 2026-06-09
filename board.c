@@ -157,3 +157,11 @@ int pieceAtSquare(Board* board, int square) {
     if(get_bit(board->bitboards[k], square)) return k ;
 
 }
+
+int inCheck(Board* board) {
+    if(isSquareAttacked(board, get_ls1b_index(board->bitboards[(board->side == WHITE)? K : k]), BLACK)) {
+        return 1 ;
+    }
+
+    return 0 ;
+}

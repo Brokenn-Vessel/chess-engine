@@ -8,6 +8,10 @@
 #include "movegen.h"
 #include "makemove.h"
 #include "attack_tables.h"
+#include "search.h" 
+
+#define pos1 "r1bqk2r/pp2bppp/2np1n2/1B2p3/4P3/2N2N2/PPP2PPP/R1BQ1RK1 b kq - 3 8"
+#define pos0 "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 "
 
 int main(int argc, char** argv) {
     SDL_Init(SDL_INIT_VIDEO) ;
@@ -33,56 +37,34 @@ int main(int argc, char** argv) {
     initBoardCoordinates() ;
 
     Board board[1] ;
-    parseFen(board, "r1bqk2r/pp2bppp/2np1n2/1B2p3/4P3/2N2N2/PPP2PPP/R1BQ1RK1 b kq - 3 8") ;
-    int sourceSquare = nsq ;
-    int targetSquare = nsq ;
+    parseFen(board, pos0) ;
+    //printBoard(board) ;
 
-    Moves moveList[1] ;
-
-    generateMoves(moveList, board) ;
+    int myColor = WHITE ;
+    
+    userInputBundle uib[1] ;
+    resetUIB(uib) ;
+    int areMovesGenerated = 0 ;
+ 
+    
     while(!quit) {
-        while(SDL_PollEvent(&event)) {
-            if(event.type == SDL_QUIT) {
-                quit = 1 ;
-            }
 
-            if(event.type == SDL_MOUSEBUTTONDOWN) {
-                printf("up\n");
-                int mousex = event.button.x ;
-                int mousey = event.button.y ;
+        if(!areMovesGenerated) {
+            uib->moveList->count = 0 ;
+            generateMoves(uib->moveList, board) ;
+            areMovesGenerated = 1 ;
+        }
 
-                int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
-                int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
+        eventHandling(board, &event, uib, &areMovesGenerated, &quit, myColor) ;
 
-                int x = (mousex - boardx) / SQUARE_SIZE ;
-                int y = (mousey - boardy) / SQUARE_SIZE ;
-
-                sourceSquare = square(y, x) ; printf("ss: %s", square[sourceSquare]);
-
-                generateMoves(moveList, board) ;
-                printMoveList(moveList) ;
-            }
-
-            if(event.type == SDL_MOUSEBUTTONUP) {
-                printf("down\n");
-
-                int mousex = event.button.x ;
-                int mousey = event.button.y ;
-
-                int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
-                int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
-
-                int x = (mousex - boardx) / SQUARE_SIZE ;
-                int y = (mousey - boardy) / SQUARE_SIZE ;
-
-                targetSquare = square(y, x) ;
-                printf("ts: %s", square[targetSquare]);
-
-                int move = isLegal(moveList, sourceSquare, targetSquare) ;
-                printf("\n%d", move) ;
-                if(move != 0) {
-                    makeMove(board, move, allMoves) ;
-                    printBoard(board) ;
+        if(board->side != myColor) {
+            SDL_Delay(3000) ;
+            if(areMovesGenerated) {
+                int bestMove = 0 ;
+                int score = negamax(board, 4, -inf, inf, &bestMove) ;
+                if(bestMove != 0) {
+                    makeMove(board, bestMove, allMoves) ;
+                    areMovesGenerated = 0 ;
                 }
             }
         }

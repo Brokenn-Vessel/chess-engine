@@ -95,3 +95,59 @@ void renderPiece(SDL_Renderer* renderer, int piece, int square) {
     SDL_RenderCopy(renderer, pieceTextures[piece], NULL, &rect) ;
 
 }
+
+void resetUIB(userInputBundle* uib) {
+    uib->moveList->count = 0 ;
+    uib->sourceSquare = uib->targetSquare = 0 ;
+}
+
+void eventHandling(Board* board, SDL_Event* event, userInputBundle* uib, int* areMovesGenerated, int* quit, int myColor) {
+
+    while(SDL_PollEvent(event)) {
+        if(event->type == SDL_QUIT) {
+            *quit = 1 ;
+        }
+        if(board->side == myColor) {
+            if(event->type == SDL_MOUSEBUTTONDOWN) {
+                printf("up\n");
+                int mousex = event->button.x ;
+                int mousey = event->button.y ;
+    
+                int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
+                int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
+    
+                int x = (mousex - boardx) / SQUARE_SIZE ;
+                int y = (mousey - boardy) / SQUARE_SIZE ;
+                if(x>=0 && y>=0 && x<8 && y<8) 
+                    uib->sourceSquare = square(y, x) ;
+                printf("ss: %s", square[uib->sourceSquare]);
+                printMoveList(uib->moveList) ;
+            }
+    
+            if(event->type == SDL_MOUSEBUTTONUP) {
+                printf("down\n");
+    
+                int mousex = event->button.x ;
+                int mousey = event->button.y ;
+    
+                int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
+                int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
+    
+                int x = (mousex - boardx) / SQUARE_SIZE ;
+                int y = (mousey - boardy) / SQUARE_SIZE ;
+                if(x>=0 && y>=0 && x<8 && y<8)
+                    uib->targetSquare = square(y, x) ;
+                printf("ts: %s", square[uib->targetSquare]);
+                int move = 0 ;
+                if(uib->sourceSquare != nsq && uib->targetSquare != nsq)
+                    move = getMoveIfLegal(uib->moveList, uib->sourceSquare, uib->targetSquare) ;
+                printf("\n%d", move) ;
+                if(move != 0) {
+                    makeMove(board, move, allMoves) ;
+                    *areMovesGenerated = 0 ;
+                    printBoard(board) ;
+                }
+            }
+        }
+    }
+}

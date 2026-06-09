@@ -10,6 +10,7 @@
 #define SQUARE_SIZE 60
 
 #define u64 unsigned long long
+#define inf 9999999
 #define square(r, f) ((r)*(8) + (f))
 #define rank(square) (8 - ((square)/8))
 #define file(square) ((square)%8)
@@ -17,6 +18,10 @@
 #define WHITE 0x00
 #define BLACK 0X01
 #define BOTH 0x02
+
+#define CHECKMATE 0xffffffffULL 
+#define STALEMATE 0xfefefefeULL
+#define MATE_SCORE 10000
 
 #define RANK8 0x00000000000000ffULL 
 #define RANK7 0x000000000000ff00ULL 
