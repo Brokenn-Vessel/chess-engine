@@ -101,53 +101,53 @@ void resetUIB(userInputBundle* uib) {
     uib->sourceSquare = uib->targetSquare = 0 ;
 }
 
-void eventHandling(Board* board, SDL_Event* event, userInputBundle* uib, int* areMovesGenerated, int* quit, int myColor) {
+void handleUserInput(Board* board, SDL_Event* event, userInputBundle* uib, int* areMovesGenerated) {
+    if(event->type == SDL_MOUSEBUTTONDOWN) {
+        int mousex = event->button.x ;
+        int mousey = event->button.y ;
 
-    while(SDL_PollEvent(event)) {
-        if(event->type == SDL_QUIT) {
-            *quit = 1 ;
+        int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
+        int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
+
+        int x = (mousex - boardx) / SQUARE_SIZE ;
+        int y = (mousey - boardy) / SQUARE_SIZE ;
+        if(x>=0 && y>=0 && x<8 && y<8) 
+            uib->sourceSquare = square(y, x) ;
+        printf("ss: %s", square[uib->sourceSquare]);
+    }
+
+    if(event->type == SDL_MOUSEBUTTONUP) {
+
+        int mousex = event->button.x ;
+        int mousey = event->button.y ;
+
+        int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
+        int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
+
+        int x = (mousex - boardx) / SQUARE_SIZE ;
+        int y = (mousey - boardy) / SQUARE_SIZE ;
+        if(x>=0 && y>=0 && x<8 && y<8)
+            uib->targetSquare = square(y, x) ;
+        printf("ts: %s", square[uib->targetSquare]);
+        int move = 0 ;
+        if(uib->sourceSquare != nsq && uib->targetSquare != nsq)
+            move = getMoveIfLegal(uib->moveList, uib->sourceSquare, uib->targetSquare) ;
+        printf("\n%d", move) ;
+        if(move != 0) {
+            makeMove(board, move, allMoves) ;
+            *areMovesGenerated = 0 ;
+            printBoard(board) ;
         }
-        if(board->side == myColor) {
-            if(event->type == SDL_MOUSEBUTTONDOWN) {
-                printf("up\n");
-                int mousex = event->button.x ;
-                int mousey = event->button.y ;
-    
-                int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
-                int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
-    
-                int x = (mousex - boardx) / SQUARE_SIZE ;
-                int y = (mousey - boardy) / SQUARE_SIZE ;
-                if(x>=0 && y>=0 && x<8 && y<8) 
-                    uib->sourceSquare = square(y, x) ;
-                printf("ss: %s", square[uib->sourceSquare]);
-                printMoveList(uib->moveList) ;
-            }
-    
-            if(event->type == SDL_MOUSEBUTTONUP) {
-                printf("down\n");
-    
-                int mousex = event->button.x ;
-                int mousey = event->button.y ;
-    
-                int boardx = BOARD_CENTER_X - BOARD_WIDTH/2 ;
-                int boardy = BOARD_CENTER_Y - BOARD_HEIGHT/2 ;
-    
-                int x = (mousex - boardx) / SQUARE_SIZE ;
-                int y = (mousey - boardy) / SQUARE_SIZE ;
-                if(x>=0 && y>=0 && x<8 && y<8)
-                    uib->targetSquare = square(y, x) ;
-                printf("ts: %s", square[uib->targetSquare]);
-                int move = 0 ;
-                if(uib->sourceSquare != nsq && uib->targetSquare != nsq)
-                    move = getMoveIfLegal(uib->moveList, uib->sourceSquare, uib->targetSquare) ;
-                printf("\n%d", move) ;
-                if(move != 0) {
-                    makeMove(board, move, allMoves) ;
-                    *areMovesGenerated = 0 ;
-                    printBoard(board) ;
-                }
-            }
+    }
+}
+
+void engineInput(Board *board, userInputBundle *uib, int *areMovesGenerated) {
+    if(*areMovesGenerated == 1) {
+        int bestMove = 0 ;
+        int score = negamax(board, 4, -inf, inf, &bestMove) ;
+        if(bestMove != 0) {
+            makeMove(board, bestMove, allMoves) ;
+            *areMovesGenerated = 0 ;
         }
     }
 }

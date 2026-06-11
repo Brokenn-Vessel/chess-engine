@@ -32,22 +32,23 @@ int main(int argc, char** argv) {
 
     
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED) ;
+
+    //initialization
     initSliderAttacks() ;
     initTextures(renderer) ;
     initBoardCoordinates() ;
-
     Board board[1] ;
     parseFen(board, pos0) ;
-    //printBoard(board) ;
-
     int myColor = WHITE ;
-    
     userInputBundle uib[1] ;
     resetUIB(uib) ;
     int areMovesGenerated = 0 ;
- 
+    int skip = 0 ;
+
     
     while(!quit) {
+
+        skip = 0 ;
 
         if(!areMovesGenerated) {
             uib->moveList->count = 0 ;
@@ -55,18 +56,19 @@ int main(int argc, char** argv) {
             areMovesGenerated = 1 ;
         }
 
-        eventHandling(board, &event, uib, &areMovesGenerated, &quit, myColor) ;
-
-        if(board->side != myColor) {
-            SDL_Delay(3000) ;
-            if(areMovesGenerated) {
-                int bestMove = 0 ;
-                int score = negamax(board, 4, -inf, inf, &bestMove) ;
-                if(bestMove != 0) {
-                    makeMove(board, bestMove, allMoves) ;
-                    areMovesGenerated = 0 ;
-                }
+        while(SDL_PollEvent(&event)) {
+            if(event.type  == SDL_QUIT) {
+                quit = 1 ;
             }
+            if(board->side == myColor) {
+                handleUserInput(board, &event, uib, &areMovesGenerated) ;
+                skip = 1 ;
+            }
+        }
+
+        if(board->side != myColor && skip == 0) {
+            SDL_Delay(3000) ;
+            engineInput(board, uib, &areMovesGenerated) ;
         }
         
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255) ;
