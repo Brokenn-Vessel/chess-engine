@@ -17,4 +17,5 @@
 
 int makeMove(Board* board, int move, int move_type) ;
 int getMoveIfLegal(Moves* moveList, int ss, int ts) ;
+int legalMovesCount(Board* board, Moves* moveList) ;
 #endif

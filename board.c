@@ -5,10 +5,8 @@ void printBoard(Board* board) {
     printf("\n") ;
 
     for(int rank = 0; rank < 8; rank++) {
-
         printf("%d    ", 8 - rank);
         for(int file = 0; file < 8; file++) {
-            
             int square = square(rank, file) ;
             char piece = '.' ;
 
@@ -23,12 +21,7 @@ void printBoard(Board* board) {
     }
 
     printf("\n      a  b  c  d  e  f  g  h\n") ;
-
     printf("\n      side      :      %s", (board->side == WHITE) ? "white" : (board->side == BLACK) ? "black" : "-" ) ;
-    printf("\n      castling  :       %c%c%c%c", (board->castling & WK) ? 'K' : '-', (board->castling & WQ) ? 'Q' : '-', (board->castling & BK) ? 'k' : '-', (board->castling & BQ) ? 'q' : '-') ;
-    printf("\n      enpassant :         %s", (board->enpassant == nsq) ? "-" : square[board->enpassant]) ;
-
-
     printf("\n") ;
 }
 

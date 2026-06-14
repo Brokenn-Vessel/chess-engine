@@ -154,3 +154,14 @@ int getMoveIfLegal(Moves* moveList, int ss, int ts) {
 
     return 0 ;
 }
+
+int legalMovesCount(Board* board, Moves* moveList) {
+    int legalCount = 0 ;
+    for(int i=0; i<moveList->count; i++) {
+        copy_board() ;
+        if(makeMove(board, moveList->moveList[i], allMoves)) legalCount++ ;
+        restore_board() ;
+    }
+
+    return legalCount ;
+}

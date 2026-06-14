@@ -29,6 +29,6 @@ void renderBoard(SDL_Renderer* renderer, Board* board) ;
 SDL_Texture* getTexture(SDL_Renderer* renderer, const char* filename) ;
 
 void renderPiece(SDL_Renderer* renderer, int piece, int square) ;
-void handleUserInput(Board* board, SDL_Event* event, userInputBundle* uib, int* areMovesGenerated) ;
-void engineInput(Board* board, userInputBundle* uib, int* areMovesGenerated) ;
+int handleUserInput(Board* board, SDL_Event* event, userInputBundle* uib, int* areMovesGenerated, int mySide) ;
+int engineInput(Board* board, userInputBundle* uib, int* areMovesGenerated) ;
 #endif

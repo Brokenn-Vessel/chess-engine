@@ -44,11 +44,15 @@ int main(int argc, char** argv) {
     resetUIB(uib) ;
     int areMovesGenerated = 0 ;
     int skip = 0 ;
-
+    int gameEnd = 0 ;
     
     while(!quit) {
 
         skip = 0 ;
+
+        if(gameEnd == 1) {
+            break ;
+        }
 
         if(!areMovesGenerated) {
             uib->moveList->count = 0 ;
@@ -57,18 +61,35 @@ int main(int argc, char** argv) {
         }
 
         while(SDL_PollEvent(&event)) {
-            if(event.type  == SDL_QUIT) {
+            if(event.type == SDL_QUIT) {
                 quit = 1 ;
             }
             if(board->side == myColor) {
-                handleUserInput(board, &event, uib, &areMovesGenerated) ;
+                if(handleUserInput(board, &event, uib, &areMovesGenerated, myColor) == 0) {
+
+                    if(inCheck(board)) {
+                        printf("Checkmate. You lost.") ;
+                    }
+                    else {
+                        printf("Stalemate.") ;
+                    }
+                    gameEnd = 1 ;
+                }
                 skip = 1 ;
             }
         }
 
         if(board->side != myColor && skip == 0) {
             SDL_Delay(3000) ;
-            engineInput(board, uib, &areMovesGenerated) ;
+            if(engineInput(board, uib, &areMovesGenerated) == 0) {
+                if(inCheck(board)) {
+                    printf("Checkmate. Engine Lost.") ;
+                }
+                else {
+                    printf("Stalemate") ;
+                }
+                gameEnd = 1 ;
+            }
         }
         
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255) ;
