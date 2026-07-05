@@ -1,16 +1,27 @@
-A chess engine made from scratch in C.
+# Chess Engine in C ♟️
 
-Features :
--> Generates pseudo-legal and legal moves.
--> Also handles Castling, enpassant and game draw.
--> Bitboards for efficient move generation and board state handling.
--> Negamax for fast move searching.
--> UI made with SDL2 and SDL2_Image libraries.
+A simple chess engine written in **C** to learn how chess engines work from the ground up.
 
-Project Status :
-->Under development.
+The engine uses **Minimax with Alpha-Beta Pruning** to search for the best move, along with legal move generation and position evaluation. It also includes a graphical interface built with **SDL2**, allowing you to play against the engine.
 
-To be done :
--> Alpha beta pruning for even faster move search.
--> Zobrist Hashing.
--> Opening books.
+This project was built mainly to explore game-tree search algorithms, low-level programming, and engine architecture while improving my understanding of systems programming in C.
+
+### Features
+
+* ♟️ Playable chess engine
+* 🧠 Minimax + Alpha-Beta Pruning
+* ✅ Legal move generation
+* 🎯 Position evaluation
+* 🖥️ SDL2 graphical interface
+* ⚡ Written entirely in C
+
+### Future Plans
+
+* Better move ordering
+* Transposition tables
+* Iterative deepening
+* Quiescence search
+* UCI support
+* Stronger evaluation function
+
+This is an ongoing project, and I'll continue improving the engine as I learn more about chess programming.
