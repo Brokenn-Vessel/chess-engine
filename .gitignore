@@ -1,1 +1,2 @@
-./renderer
+renderer.c
+renderer.h
