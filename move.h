@@ -37,5 +37,6 @@ typedef struct {
 void addMove(Moves* moveList, int move) ;
 void printMove(int move) ;
 void printMoveList(Moves* moveList) ;
+int parseMove(const char* str, Moves* moveList) ;
 
 #endif

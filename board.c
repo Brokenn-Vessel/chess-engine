@@ -8,14 +8,12 @@ void printBoard(Board* board) {
         printf("%d    ", 8 - rank);
         for(int file = 0; file < 8; file++) {
             int square = square(rank, file) ;
-            char piece = '.' ;
+            char* piece = "." ;
 
             for (int bb_piece = P; bb_piece <= k; bb_piece++) {
                 if(get_bit(board->bitboards[bb_piece], square)) piece = pieceAscii[bb_piece] ;
             }
-
-            printf(" %c ", piece) ;
-
+            printf(" %s ", piece) ;
         }
         printf("\n") ;
     }
@@ -39,35 +37,27 @@ void parseFen(Board* board, const char* fen) {
     while(*fen != ' ') {
         
         if(*fen >= '0' && *fen <= '9') {
-
             square += (*fen - '0') ;
-
         }
 
         //BLACK PIECE 
         else if(*fen >= 'a' && *fen <= 'z') {
-
             set_bit(board->bitboards[pieceIndex[*fen]], square) ;
             set_bit(board->occupancy[BLACK], square) ;
             set_bit(board->occupancy[BOTH], square) ;
 
             square++ ;
-
         }
 
         //WHITE PIECES
         else if(*fen >= 'A' && *fen <= 'Z') {
-
             set_bit(board->bitboards[pieceIndex[*fen]], square) ;
             set_bit(board->occupancy[WHITE], square) ;
             set_bit(board->occupancy[BOTH], square) ;
 
             square++ ;
-
         }
-
         fen++ ;
-
     }
 
     fen++ ;
@@ -104,9 +94,7 @@ void parseFen(Board* board, const char* fen) {
     if(!fail) {
         board->enpassant = rank * 8 + file ;
     }
-
     fen++ ;
-
 }
 
 int isSquareAttacked(Board* board, int square, int side) {

@@ -1,6 +1,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+// Only for SDL2
 #define WINDOW_WIDTH 900
 #define WINDOW_HEIGHT 600
 #define BOARD_WIDTH 480
@@ -58,7 +59,7 @@ typedef enum { P, N, B, R, Q, K, p, n, b, r, q, k , none} Piece ;
 typedef enum { WK = 1, WQ = 2, BK = 4, BQ = 8 } Castle ;
 typedef enum { allMoves, capturesOnly} moveType;
 
-extern char pieceAscii[] ;
+extern char* pieceAscii[] ;
 extern int pieceIndex[] ;
 extern char* square[] ;
 extern char promotedPieces[] ;

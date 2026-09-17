@@ -1,6 +1,9 @@
 #include "types.h"
 
-char pieceAscii[] = "PNBRQKpnbrqk" ;
+// char pieceAscii[] = "PNBRQKpnbrqk" ;
+char* pieceAscii[] = {
+    "♙", "♘", "♗", "♖", "♕", "♔", "♟", "♞", "♝", "♜", "♛", "♚"
+} ;
 
 int pieceIndex[] = {
     ['P'] = P,
