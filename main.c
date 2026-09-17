@@ -9,6 +9,7 @@
 #include "makemove.h"
 #include "attack_tables.h"
 #include "search.h" 
+#include "uci.h"
 
 #define pos1 "r1bqk2r/pp2bppp/2np1n2/1B2p3/4P3/2N2N2/PPP2PPP/R1BQ1RK1 b kq - 3 8"
 #define pos0 "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 "
@@ -110,18 +111,21 @@
 
 int main(void) {
 
-    Board board[1] ;
+    // Board board[1] ;
 
-    parseFen(board, pos1) ;
+    // parseFen(board, pos1) ;
 
-    printBoard(board) ;
-    Moves movelist[1] ;
-    generateMoves(movelist, board) ;
+    // printBoard(board) ;
+    // Moves movelist[1] ;
+    // generateMoves(movelist, board) ;
 
-    int move = parseMove("f6e4", movelist) ;
-    if(move != -1) {
-        printMove(move) ;
-    }    
+    // int move = parseMove("f6e4", movelist) ;
+    // if(move != -1) {
+    //     printMove(move) ;
+    // }    
+
+    initSliderAttacks() ;
+    uci_loop() ;
 
     return 0 ;
 }

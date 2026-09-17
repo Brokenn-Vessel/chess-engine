@@ -1,6 +1,8 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include <stdlib.h>
+
 // Only for SDL2
 #define WINDOW_WIDTH 900
 #define WINDOW_HEIGHT 600
@@ -9,6 +11,11 @@
 #define BOARD_CENTER_X WINDOW_WIDTH/2
 #define BOARD_CENTER_Y WINDOW_HEIGHT/2
 #define SQUARE_SIZE 60
+
+// formalities
+#define ENGINE_NAME "EVA-01"
+#define ENGINE_AUTHOR "blood"
+
 
 #define u64 unsigned long long
 #define inf 9999999
