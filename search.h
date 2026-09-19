@@ -10,6 +10,6 @@
 
 extern int bestMove ;
 
-int negamax(Board* board, int depth, int alpha, int beta, int* bestMove) ;
+int negamax(Board* board, int depth, int alpha, int beta, int* bestMove, int ply) ;
 
 #endif

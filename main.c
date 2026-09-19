@@ -12,7 +12,7 @@
 #include "uci.h"
 
 #define pos1 "r1bqk2r/pp2bppp/2np1n2/1B2p3/4P3/2N2N2/PPP2PPP/R1BQ1RK1 b kq - 3 8"
-#define pos0 "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 "
+#define pos0 "rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR w KQkq - 0 1 "
 
 // int main(int argc, char** argv) {
 //     SDL_Init(SDL_INIT_VIDEO) ;
@@ -126,6 +126,20 @@ int main(void) {
 
     initSliderAttacks() ;
     uci_loop() ;
+
+    // Board board[1] ;
+    // parseFen(board, "6k1/5ppp/8/8/8/8/8/R5K1 w - - 0 1") ;
+    // printBoard(board) ;
+    // int best_move = 0 ;
+    // int alpha = negamax(board, 4, -inf, inf, &best_move) ;
+    // if(best_move != 0) {
+    //     printMove(best_move) ;
+    //     printf("alpha: %d\n", alpha) ;
+    // }
+    // printf("Evluation: %d\n", evaluate(board)) ;
+    // makeMove(board, best_move, allMoves) ;
+    // printBoard(board) ;
+    // printf("Evaluation: %d\n", evaluate(board)) ;
 
     return 0 ;
 }

@@ -97,6 +97,7 @@ void parseFen(Board* board, const char* fen) {
     fen++ ;
 }
 
+// Is squaare attacked by the side specified, that's what this function finds out
 int isSquareAttacked(Board* board, int square, int side) {
 
     //pawn
@@ -140,7 +141,7 @@ int pieceAtSquare(Board* board, int square) {
 }
 
 int inCheck(Board* board) {
-    if(isSquareAttacked(board, get_ls1b_index(board->bitboards[(board->side == WHITE)? K : k]), BLACK)) {
+    if(isSquareAttacked(board, get_ls1b_index(board->bitboards[(board->side == WHITE)? K : k]), 1^board->side)) {
         return 1 ;
     }
 
